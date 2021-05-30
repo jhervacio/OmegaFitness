@@ -44,7 +44,13 @@
 							<thead>
 								<tr>
 									<th class="text-center">CODIGO</th>
-									<th class="text-center">CLIENTE</th>
+									<th class="text-center">NOMBRE</th>
+									<th class="text-center">APELLIDO</th>
+									<th class="text-center">EDAD</th>
+									<th class="text-center">F.NACIMIENTO</th>
+									<th class="text-center">PESO</th>
+									<th class="text-center">ESTATURA</th>
+									<th class="text-center">PLAN</th>
 									<th class="text-center">OPERACION</th>
 									<th class="text-center">OPERACION</th>
 								</tr>
@@ -53,7 +59,13 @@
 							<tbody>
 								<tr th:each="rac: ${listaClientes}">
 									<td th:text="${rac.idCliente}"></td>
-									<td th:text="${rac.nameCliente}"></td>
+									<td th:text="${rac.nombreCliente}"></td>
+									<td th:text="${rac.apellidoCliente}"></td>
+									<td th:text="${rac.edadCliente}"></td>
+									<td th:text="${#dates.format(rac.fechaNacimiento,'dd/MM/yyy')}"></td>   
+									<td th:text="${rac.pesoCliente}"></td>
+									<td th:text="${rac.estaturaCliente}"></td>
+									<td th:text="${rac.planCliente}"></td>                                        
 									<td class="text-center"><a class="glyphicon glyphicon-trash" th:href="@{/cliente/eliminar?id=}+${rac.idCliente}"> Eliminar</a></td>
 									<td class="text-center"><a class="glyphicon glyphicon-pencil" th:href="@{'/cliente/modificar/' + ${rac.idCliente}}"> Modificar</a></td>
 								</tr>
