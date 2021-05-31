@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	
+	<head>
+		<meta charset="UTF-8"></meta>
+		<title>Plan</title>
+		
+		<script type="text/javascript"
+				src="ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.js">
+		</script>
+		
+		<link
+			href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+			rel="stylesheet" id="bootstrap-css">
+		</link>
+		
+		<script
+			src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
+		</script>
+		
+		<script src="code.jquery.com/jquery-3.2.1.min.js"></script>
+	</head>
+	
+	<body>
+		<div th:replace="fragments/header :: header"></div>
+		
+		<div class="container">
+			<form th:action="@{/plan/registrar}" method="post" th:object="${plan}">
+				<div class="form-group">
+					<label for="idplan">ID:</label>
+					<input type="text" class="form-control" th:field="*{idPlan}"></input>
+					
+					<div class="form-group">
+						<label for="nombre">Nombre:</label>
+						<input type="text" class="form-control" th:field="*{nombrePlan}" id="nombre"></input>
+						
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('nombrePlan')}" 
+							th:errors="*{nombrePlan}">						
+						</div>
+						
+						<label for="precio">Precio:</label>
+						<input type="text" class="form-control" th:field="*{PrecioPlan}" id="precio"></input>
+						
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('PrecioPlan')}" 
+							th:errors="*{PrecioPlan}">						
+						</div>
+						
+						<label for="descripcion">Descripcion del Plan:</label>
+						<input type="text" class="form-control" th:field="*{DescripcionPlan}" id="descripcion"></input>
+						
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('DescripcionPlan')}" 
+							th:errors="*{DescripcionPlan}">						
+						</div>
+						
+						<label for="duracion">Duracion del plan:</label>
+						<input type="text" class="form-control" th:field="*{Duracion}" id="duracion"></input>
+						
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('Duracion')}" 
+							th:errors="*{Duracion}">						
+						</div>
+						
+						
+						<label for="tipoplan"class="col-sm-2 col-form-label">Tipo de Plan:</label>
+						<select class="form-control" th:field="*{tipoplan.idTipoPlan}">
+						<option th:each="t:${listaTipoPlanes}" th:value="${t.idTipoPlan}"
+						th:text="${t.nombreTipoPlan}"
+						th:selected="(${t.idTipoPlan}== *{tipoplan.idTipoPlan})")>
+						</option>
+						</select>
+						
+					</div>
+				
+				</div>
+				
+				<button type="submit" class="btn btn-primary">Aceptar</button>
+				<a href="/plan/listar" class="btn btn-danger">Cancelar</a>
+				
+			</form>
+		</div>
+		
+		<div th:replace="fragments/footer :: footer"></div>
+	</body>
+	
+</html>
