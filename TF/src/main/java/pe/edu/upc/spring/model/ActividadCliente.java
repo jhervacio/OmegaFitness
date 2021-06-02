@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
@@ -18,23 +20,49 @@ public class ActividadCliente implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idActividad;
+	private int idActividadCliente;
+	
+	@ManyToOne
+	@JoinColumn(name="idCliente",nullable=false)
+	private Cliente cliente;
+	
+	@ManyToOne
+	@JoinColumn(name="idActividad",nullable=false)
+	private Actividad actividad;
 
 	public ActividadCliente() {
 		super();
 	}
 
-	public ActividadCliente(int idActividad) {
+	public ActividadCliente(int idActividadCliente, Cliente cliente, Actividad actividad) {
 		super();
-		this.idActividad = idActividad;
+		this.idActividadCliente = idActividadCliente;
+		this.cliente = cliente;
+		this.actividad = actividad;
 	}
 
-	public int getIdActividad() {
-		return idActividad;
+	public int getIdActividadCliente() {
+		return idActividadCliente;
 	}
 
-	public void setIdActividad(int idActividad) {
-		this.idActividad = idActividad;
+	public void setIdActividadCliente(int idActividadCliente) {
+		this.idActividadCliente = idActividadCliente;
 	}
-		
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+	public Actividad getActividad() {
+		return actividad;
+	}
+
+	public void setActividad(Actividad actividad) {
+		this.actividad = actividad;
+	}
+	
 }

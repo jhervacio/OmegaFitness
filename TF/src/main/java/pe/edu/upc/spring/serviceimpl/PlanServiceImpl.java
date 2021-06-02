@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+
 import pe.edu.upc.spring.model.Plan;
 import pe.edu.upc.spring.repository.IPlanRepository;
 import pe.edu.upc.spring.service.IPlanService;
@@ -63,8 +64,10 @@ public class PlanServiceImpl implements IPlanService {
 
 	@Override
 	@Transactional
-	public List<Plan> buscarNombre(String namePlan) {
-		return dPlan.buscarNombre(namePlan);
+	public List<Plan> findByNombrePlan(String namePlan) {
+		List<Plan> lista=dPlan.findByNombrePlan(namePlan);
+		
+		return lista;
 	}
 
 	@Override

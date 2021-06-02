@@ -3,7 +3,7 @@
 	
 	<head>
 		<meta charset="UTF-8"></meta>
-		<title>Planes</title>
+		<title>Cliente-Planes</title>
 		
 		<script type="text/javascript"
 				src="ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.js">
@@ -30,17 +30,18 @@
 			<form id="myform">
 				<div class="row clearfix">
 					<div class="col-md-12 column">
-						<a 	style="border-bottom-color: black" th:href="@{/plan/irRegistrar}" id="add-row"
+						<a 	style="border-bottom-color: black" th:href="@{/clienteplan/irRegistrar}" id="add-row"
 						   	type = "button"
 						   	class= "btn btn-primary btn-md left-block">
-							<span class="glyphicon glyphicon-plus"></span> Planes
+							<span class="glyphicon glyphicon-plus"></span>Clientes Planes
 						</a>
 						
-						<a 	style="border-bottom-color: black" th:href="@{/plan/irBuscar}" id="add-row"
+						<a 	style="border-bottom-color: black" th:href="@{/clienteplan/irBuscar}" id="add-row"
 						   	type = "button"
 						   	class= "btn btn-primary btn-md left-block">
 							<span class="glyphicon glyphicon-search"></span> Buscar
 						</a>
+						
 
 
 		
@@ -48,27 +49,24 @@
 							<thead>
 								<tr>
 									<th class="text-center">CODIGO</th>
-									<th class="text-center">NOMBRE</th>
-									<th class="text-center">PRECIO</th>
-									<th class="text-center">DESCRIPCION</th>
-									<th class="text-center">DURACION</th>
-									<th class="text-center">TIPO DE PLAN</th>
+									<th class="text-center">PLAN</th>
+									<th class="text-center">CLIENTE</th>
+									<th class="text-center">FECHA</th>
+
 									<th class="text-center">OPERACION</th>
 									<th class="text-center">OPERACION</th>
 								</tr>
 							</thead>
 							
 							<tbody>
-								<tr th:each="pla: ${listaPlanes}">
-									<td th:text="${pla.idPlan}"></td>
-									<td th:text="${pla.nombrePlan}"></td>
-									<td th:text="${pla.PrecioPlan}"></td>
-									<td th:text="${pla.DescripcionPlan}"></td>
-									<td th:text="${pla.Duracion}"></td> 
-									<td th:text="${pla.tipoplan.nombreTipoPlan}"></td>
+								<tr th:each="pla: ${listaClientePlanes}">
+									<td th:text="${pla.idClientePlan}"></td>
+									<td th:text="${pla.plan.nombrePlan}"></td>
+									<td th:text="${pla.cliente.nombreCliente}"></td>
+				<td th:text="${#dates.format(pla.fechaClientePlan,'dd/MM/yyy')}"></td>   
 								                                      
-									<td class="text-center"><a class="glyphicon glyphicon-trash" th:href="@{/plan/eliminar?id=}+${pla.idPlan}"> Eliminar</a></td>
-									<td class="text-center"><a class="glyphicon glyphicon-pencil" th:href="@{'/plan/modificar/' + ${pla.idPlan}}"> Modificar</a></td>
+									<td class="text-center"><a class="glyphicon glyphicon-trash" th:href="@{/clienteplan/eliminar?id=}+${pla.idClientePlan}"> Eliminar</a></td>
+									<td class="text-center"><a class="glyphicon glyphicon-pencil" th:href="@{'/clienteplan/modificar/' + ${pla.idClientePlan}}"> Modificar</a></td>
 								</tr>
 							</tbody>
 						</table>

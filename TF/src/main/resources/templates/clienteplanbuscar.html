@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	
+	<head>
+		<meta charset="UTF-8"></meta>
+		<title>PLAN BUSCAR</title>
+		
+		<script type="text/javascript"
+				src="ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.js">
+		</script>
+		
+		<link
+			href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+			rel="stylesheet" id="bootstrap-css">
+		</link>
+		
+		<script
+			src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
+		</script>
+		
+		<script src="code.jquery.com/jquery-3.2.1.min.js"></script>
+	</head>
+	
+	<body>
+		<div th:replace="fragments/header :: header"></div>
+		
+		<div class="container-fluid">
+		<div class="row clearfix">
+			<h1 class=" btn btn-primary btn-md left-block">Busquedas</h1>
+		
+		
+			<form th:action="@{/clienteplan/clienteplanbuscar}" method="post" th:object="${clienteplan}">
+				<div class="form-group">
+				   <div class="col-sm-12">
+				   		<input type ="text" class="form-control" th:field="*{cliente.nombreCliente}" id="pla"
+				   				placeholder="Ingrese Nombre del Cliente"> </input>
+				   		<div align="left">
+				   		  <button type="submit" class= "btn btn-danger">Buscar</button>
+				   		  <a href="/clienteplan/listar" class="btn btn-dark">Cancelar</a>
+				   		  
+				   		</div>		
+				   	
+				   </div>
+				</div>
+				</form>
+				</div>
+												
+				
+				
+				
+				
+		
+				<hr class="sidebar-divider">
+				
+
+			
+			
+			<table class="table table-bordered table-hover table-striped" id="tab_logic">
+							<thead>
+								<tr>
+									<th class="text-center">CODIGO</th>
+									<th class="text-center">PLAN</th>
+									<th class="text-center">CLIENTE</th>
+									<th class="text-center">FECHA</th>
+
+									<th class="text-center">OPERACION</th>
+									<th class="text-center">OPERACION</th>
+								</tr>
+							</thead>
+							
+							<tbody>
+								<tr th:each="pla: ${listaClientePlanes}">
+									<td th:text="${pla.idClientePlan}"></td>
+									<td th:text="${pla.plan.nombrePlan}"></td>
+									<td th:text="${pla.cliente.nombreCliente}"></td>
+				<td th:text="${#dates.format(pla.fechaClientePlan,'dd/MM/yyy')}"></td>   
+								                                      
+									<td class="text-center"><a class="glyphicon glyphicon-trash" th:href="@{/clienteplan/eliminar?id=}+${pla.idClientePlan}"> Eliminar</a></td>
+									<td class="text-center"><a class="glyphicon glyphicon-pencil" th:href="@{'/clienteplan/modificar/' + ${pla.idClientePlan}}"> Modificar</a></td>
+								</tr>
+							</tbody>
+						</table>
+						
+		<p th:text="${mensaje}" class="form-text text-dark"></p>
+			
+			
+		</div>
+	
+		<div th:replace="fragments/footer :: footer"></div>
+	</body>
+	
+</html>
