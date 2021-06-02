@@ -11,6 +11,6 @@ public interface IAdministradorService {
 	public void eliminar(int idAdministrador);
 	public Optional<Administrador> listarId(int idAdministrador);
 	List<Administrador> listar();
-	List<Administrador> buscarNombre(String nombreAdministrador);
-
+	List<Administrador> findByName(String nombreAdministrador);
+	List<Administrador> findByDocument(String documentoAdministrador);
 }

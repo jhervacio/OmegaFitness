@@ -13,7 +13,7 @@ import pe.edu.upc.spring.model.Administrador;
 public interface IAdministradorRepository  extends JpaRepository<Administrador, Integer>{
 
 	@Query("select count(a.documentoAdministrador) from Administrador a where a.documentoAdministrador = :documentoAdministrador")
-	public int searchRucRepartidor(@Param("documentoAdministrador") String documentoAdministrador);
+	public int buscarDocumentoAdministrador(@Param("documentoAdministrador") String documentoAdministrador);
 	
 	@Query("select a from Administrador a where a.nombreAdministrador like %:nombreAdministrador%")
 	List<Administrador> findByName(String nombreAdministrador);

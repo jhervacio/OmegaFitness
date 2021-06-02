@@ -14,8 +14,7 @@ public interface ISalaRepository  extends JpaRepository<Sala, Integer>{
 	@Query("select s from Sala s where s.nombreSala like %:nombreSala%")
 	List<Sala> findByName(String nombreSala);
 	
-	@Query("select s from Sala a where s. like %:documentoAdministrador%")
-	List<Sala> findByGym(String nombreGimnasio);
-	
+	//@Query("select s from Sala a where s. like %:documentoAdministrador%")
+	//List<Sala> findByNameGym(String nombreGimnasio);
 	
 }
