@@ -25,17 +25,17 @@
 		<div th:replace="fragments/header :: header"></div>
 		
 		<div class="container">
-			<form th:action="@{/gimansio/registrar}" method="post" th:object="${gimansio}">
+			<form th:action="@{/gimnasio/registrar}" method="post" th:object="${gimnasio}">
 				<div class="form-group">
 					<label for="idcliente">ID:</label>
-					<input type="text" class="form-control" th:field="*{idGimansio}"></input>
+					<input type="text" class="form-control" th:field="*{idGimnasio}"></input>
 					
 					<div class="form-group">
 						<label for="nombre">Nombre nueva sede:</label>
-						<input type="text" class="form-control" th:field="*{nombreGimansio}" id="nombre"></input>
+						<input type="text" class="form-control" th:field="*{nombreGimnasio}" id="nombre"></input>
 						
-						<div class="alert alert-danger" th:if="${#fields.hasErrors('nombreGimansio')}" 
-							th:errors="*{nombreGimansio}">						
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('nombreGimnasio')}" 
+							th:errors="*{nombreGimnasio}">						
 						</div>
 						
 						<label for="Distrito">Distrito:</label>
