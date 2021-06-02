@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	
+	<head>
+		<meta charset="UTF-8"></meta>
+		<title>Tipo de Documento</title>
+		
+		<script type="text/javascript"
+				src="ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.js">
+		</script>
+		
+		<link
+			href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+			rel="stylesheet" id="bootstrap-css">
+		</link>
+		
+		<script
+			src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
+		</script>
+		
+		<script src="code.jquery.com/jquery-3.2.1.min.js"></script>
+	</head>
+	
+	<body>
+		<div th:replace="fragments/header :: header"></div>
+		
+		<div class="container">
+			<form th:action="@{/tipodocumento/registrar}" method="post" th:object="${tipodocumento}">
+				<div class="form-group">
+					<label for="idTipoDocumento">ID:</label>
+					<input type="text" class="form-control" th:field="*{idTipoDocumento}"></input>
+					
+					<div class="form-group">
+						<label for="nombre">Nombre:</label>
+						<input type="text" class="form-control" th:field="*{nombreTipoDocumento}" id="nombre"></input>
+						
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('nombreTipoDocumento')}" 
+							th:errors="*{nombreTipoDocumento}">						
+						</div>
+					
+						
+						
+					</div>
+				
+				</div>
+				
+				<button type="submit" class="btn btn-primary">Aceptar</button>
+				<a href="/tipodocumento/listar" class="btn btn-danger">Cancelar</a>
+				
+			</form>
+		</div>
+		
+		<div th:replace="fragments/footer :: footer"></div>
+	</body>
+	
+</html>

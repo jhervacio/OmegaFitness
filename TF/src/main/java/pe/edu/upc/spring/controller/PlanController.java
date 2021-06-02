@@ -1,5 +1,6 @@
 package pe.edu.upc.spring.controller;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.sun.el.parser.ParseException;
+
 
 import pe.edu.upc.spring.model.Plan;
 import pe.edu.upc.spring.service.IPlanService;
@@ -112,7 +114,25 @@ public class PlanController {
 		return "listPlan";
 	}
 	
+	@RequestMapping("/irBuscar")
+	public String irPaginaBuscar(Model model ) {
+		model.addAttribute("listaTipoPlanes", tService.listar());
+		
+		model.addAttribute("plan", new Plan());
+		model.addAttribute("tipoplan", new TipoPlan());
+		
+		return "planbuscar";
+	}
 	
 	
+	@RequestMapping("/planbuscar")
+	public String findbyPlan(Map<String, Object> model,
+			@ModelAttribute Plan plan ) throws ParseException {
+		List<Plan> listaPlanes;
+		plan.setNombrePlan(plan.getNombrePlan());
+		listaPlanes = pService.findByNombrePlan(plan.getNombrePlan());
+		model.put("listaPlanes",listaPlanes);
+		return "planbuscar";
+	}
 	
 }
