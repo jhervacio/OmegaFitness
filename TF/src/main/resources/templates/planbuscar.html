@@ -3,7 +3,7 @@
 	
 	<head>
 		<meta charset="UTF-8"></meta>
-		<title>Planes</title>
+		<title>PLAN BUSCAR</title>
 		
 		<script type="text/javascript"
 				src="ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.js">
@@ -20,31 +20,41 @@
 		
 		<script src="code.jquery.com/jquery-3.2.1.min.js"></script>
 	</head>
-
+	
 	<body>
 		<div th:replace="fragments/header :: header"></div>
 		
+		<div class="container-fluid">
+		<div class="row clearfix">
+			<h1 class=" btn btn-primary btn-md left-block">Busquedas</h1>
+		
+			<form th:action="@{/plan/planbuscar}" method="post" th:object="${plan}">
+				<div class="form-group">
+				   <div class="col-sm-12">
+				   		<input type ="text" class="form-control" th:field="*{nombrePlan}" id="pla"
+				   				placeholder="Ingrese Nombre del Plan"> </input>
+				   		<div align="left">
+				   		  <button type="submit" class= "btn btn-danger">Buscar</button>
+				   		  <a href="/plan/listar" class="btn btn-dark">Cancelar</a>
+				   		  
+				   		</div>		
+				   	
+				   </div>
+				</div>
+				</form>
+				</div>
+												
+				
+				
+				
+				
+		
+				<hr class="sidebar-divider">
 				
 
-		<div class="container">
-			<form id="myform">
-				<div class="row clearfix">
-					<div class="col-md-12 column">
-						<a 	style="border-bottom-color: black" th:href="@{/plan/irRegistrar}" id="add-row"
-						   	type = "button"
-						   	class= "btn btn-primary btn-md left-block">
-							<span class="glyphicon glyphicon-plus"></span> Planes
-						</a>
-						
-						<a 	style="border-bottom-color: black" th:href="@{/plan/irBuscar}" id="add-row"
-						   	type = "button"
-						   	class= "btn btn-primary btn-md left-block">
-							<span class="glyphicon glyphicon-search"></span> Buscar
-						</a>
-
-
-		
-						<table class="table table-bordered table-hover table-striped" id="tab_logic">
+			
+			
+			<table class="table table-bordered table-hover table-striped" id="tab_logic">
 							<thead>
 								<tr>
 									<th class="text-center">CODIGO</th>
@@ -72,16 +82,12 @@
 								</tr>
 							</tbody>
 						</table>
-					</div>
-				</div>
-				<div th:if="${mensaje}" class="alert alert-danger">
-					<p th:text="${mensaje}"></p>
-				</div>
-			</form>
+						
+		<p th:text="${mensaje}" class="form-text text-dark"></p>
 			
-
+			
 		</div>
-		
+	
 		<div th:replace="fragments/footer :: footer"></div>
 	</body>
 	

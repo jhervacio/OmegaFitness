@@ -1,6 +1,7 @@
 package pe.edu.upc.spring.repository;
 
 
+
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -19,6 +20,7 @@ public interface IPlanRepository extends JpaRepository<Plan, Integer>{
 	@Query("from Plan p where p.tipoplan.nombreTipoPlan like %:nombreTipoPlan%")
 	List<Plan> buscarTipoPlan(@Param("nombreTipoPlan") String nombreTipoPlan);
 	
-
+	@Query("from Plan p where p.nombrePlan like %:nombrePlan%")
+	List<Plan> findByNombrePlan(String nombrePlan);
 	
 }
