@@ -6,7 +6,7 @@ import java.util.Optional;
 import pe.edu.upc.spring.model.Administrador;
 
 public interface IAdministradorService {
-	public boolean insertar(Administrador administrador);
+	public Integer insertar(Administrador administrador);
 	public boolean modificar(Administrador administrador);
 	public void eliminar(int idAdministrador);
 	public Optional<Administrador> listarId(int idAdministrador);
