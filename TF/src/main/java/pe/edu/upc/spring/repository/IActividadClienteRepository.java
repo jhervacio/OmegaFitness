@@ -16,6 +16,6 @@ public interface IActividadClienteRepository extends JpaRepository<ActividadClie
 	@Query("select a from Actividad a where a.cliente.nombreCliente like %:nombreCliente%")
 	List<ActividadCliente> findByNameCliente(String nombreCliente);
 	
-	@Query("select a from ActividadCliente a where a.actividad.nombreActividad like %:nombreActividadCliente%")
+	@Query("select a from ActividadCliente a where a.actividad.nombreActividad like %:nombreActividad%")
 	List<ActividadCliente> findByNameActividad(String nombreActividad);
 }

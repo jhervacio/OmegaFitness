@@ -70,8 +70,8 @@ public class SalaServiceImpl implements ISalaService{
 	@Override
 	@Transactional(readOnly=true)
 	public List<Sala> findByNameGym(String nombreGimnasio) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Sala> lista = salaR.findByNameGym(nombreGimnasio);
+		return lista;
 	}
 
 }

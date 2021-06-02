@@ -15,15 +15,15 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.sun.el.parser.ParseException;
 
-import pe.edu.upc.spring.model.Administrador;
-import pe.edu.upc.spring.service.IAdministradorService;
+import pe.edu.upc.spring.model.ActividadCliente;
+import pe.edu.upc.spring.service.IActividadClienteService;
 
 @Controller
-@RequestMapping("/administrador")
-public class AdministradorController {
-
+@RequestMapping("/actividadCliente")
+public class ActividadClienteController {
+	
 	@Autowired
-	private IAdministradorService aService;
+	private IActividadClienteService aCService;
 	
 	@RequestMapping("/bienvenido")
 	public String irPaginaBienvenida() {
@@ -31,44 +31,42 @@ public class AdministradorController {
 	}
 	
 	@RequestMapping("/")
-	public String irPaginaListadoAdministradores(Map<String, Object> model) {
-		model.put("listaAdministradores", aService.listar());
-		return "listAdministrador";
+	public String irPaginaListadoActividadesCliente(Map<String, Object> model) {
+		model.put("listaActividadesCliente", aCService.listar());
+		return "listActividadCliente";
 	}
 	
 	@RequestMapping("/irRegistrar")
 	public String irPaginaRegistrar(Model model) {
-		model.addAttribute("administrador", new Administrador());
-		return "administrador";
+		model.addAttribute("actividadCliente", new ActividadCliente());
+		return "actividadCliente";
 	}
 	
 	@RequestMapping("/registrar")
-	public String registrar(@ModelAttribute Administrador objAdministrador, BindingResult binRes, Model model) throws ParseException {
+	public String registrar(@ModelAttribute ActividadCliente objActividadCliente, BindingResult binRes, Model model) throws ParseException {
 		if (binRes.hasErrors())
-		return "administrador";
-	else {
-		int rpta = aService.insertar(objAdministrador);
-		if (rpta > 0) {
-			model.addAttribute("mensaje", "El Documento del administrador ya se encuentra registrado");
-			return "administrador";
-		}
+		return "actividadCliente";
 		else {
-			model.addAttribute("mensaje", "Se guardo correctamente");
-			return "redirect:/administrador/listar";
+			boolean flag = aCService.insertar(objActividadCliente);
+			if (flag)
+				return "redirect:/actividadCliente/listar";
+			else {
+				model.addAttribute("mensaje", "Ocurrio un error");
+				return "redirect:/actividadCliente/irRegistrar";
 			}
 		}
 	}
 	
 	@RequestMapping("/modificar/{id}")
 	public String modificar(@PathVariable int id, Model model, RedirectAttributes objRedir) throws ParseException {
-		Optional<Administrador> objAdministrador = aService.listarId(id);
-		if(objAdministrador == null) {
+		Optional<ActividadCliente> objActividadCliente = aCService.listarId(id);
+		if(objActividadCliente == null) {
 			objRedir.addFlashAttribute("mensaje", "Ocurrio un error");
-			return "redirect:/administrador/listar";
+			return "redirect:/actividadCliente/listar";
 		}
 		else {
-			model.addAttribute("administrador", objAdministrador);
-			return "administrador";
+			model.addAttribute("actividadCliente", objActividadCliente);
+			return "actividadCliente";
 		}
 	}
 	
@@ -76,24 +74,22 @@ public class AdministradorController {
 	public String eliminar(Map<String, Object> model, @RequestParam(value="id") Integer id) {
 		try {
 			if (id != null && id>0) {
-				aService.eliminar(id);
-				model.put("listaAdministradores", aService.listar());
+				aCService.eliminar(id);
+				model.put("listaActividadesCliente", aCService.listar());
 			}
 		}
 		catch (Exception ex) {
 			System.out.println(ex.getMessage());
 			model.put("mensaje", "Ocurrio un error");
-			model.put("listaAdministradores", aService.listar());
+			model.put("listaActividadesCliente", aCService.listar());
 		}
-		return "listAdministrador";
+		return "listActividadCliente";
 	}
 	
 	@RequestMapping("/listar")
 	public String listar(Map<String, Object> model) {
-		model.put("listaAdministradores", aService.listar());
-		return "listAdministrador";
+		model.put("listaActividadesCliente", aCService.listar());
+		return "listActividadCliente";
 	}
-	
-	
 	
 }

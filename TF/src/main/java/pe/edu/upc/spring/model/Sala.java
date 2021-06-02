@@ -7,8 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-//import javax.persistence.JoinColumn;
-//import javax.persistence.ManyToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
@@ -27,19 +27,20 @@ public class Sala implements Serializable {
 	@Column(name = "capacidadSala", nullable = false, length=30)
 	private String capacidadSala;
 	
-	/*@ManyToOne
+	@ManyToOne
 	@JoinColumn(name="idGimnasio",nullable=false)
-	private Gimnasio gimnasio;*/
+	private Gimnasio gimnasio;
 	
 	public Sala() {
 		super();
 	}
 
-	public Sala(int idSala, String nombreSala, String capacidadSala) {
+	public Sala(int idSala, String nombreSala, String capacidadSala, Gimnasio gimnasio) {
 		super();
 		this.idSala = idSala;
 		this.nombreSala = nombreSala;
 		this.capacidadSala = capacidadSala;
+		this.gimnasio = gimnasio;
 	}
 
 	public int getIdSala() {
@@ -65,6 +66,15 @@ public class Sala implements Serializable {
 	public void setCapacidadSala(String capacidadSala) {
 		this.capacidadSala = capacidadSala;
 	}
+
+	public Gimnasio getGimnasio() {
+		return gimnasio;
+	}
+
+	public void setGimnasio(Gimnasio gimnasio) {
+		this.gimnasio = gimnasio;
+	}
+
 	
 }
 	
