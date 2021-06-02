@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+//import javax.persistence.JoinColumn;
+//import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
@@ -24,6 +26,10 @@ public class Sala implements Serializable {
 	private String nombreSala;
 	@Column(name = "capacidadSala", nullable = false, length=30)
 	private String capacidadSala;
+	
+	/*@ManyToOne
+	@JoinColumn(name="idGimnasio",nullable=false)
+	private Gimnasio gimnasio;*/
 	
 	public Sala() {
 		super();
