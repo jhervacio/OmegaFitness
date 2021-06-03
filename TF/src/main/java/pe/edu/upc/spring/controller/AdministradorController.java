@@ -94,6 +94,9 @@ public class AdministradorController {
 		return "listAdministrador";
 	}
 	
-	
-	
+	@RequestMapping("/irBuscar")
+	public String buscar(Model model) {
+		model.addAttribute("administrador", new Administrador());
+		return "buscar";
+	}
 }

@@ -123,7 +123,7 @@ public class ClientePlanController {
 		return "listClientePlan";
 	}
 	
-	@RequestMapping("/irBuscar")
+	/*@RequestMapping("/irBuscar")
 	public String irPaginaBuscar(Model model ) {
 		
 		model.addAttribute("listaPlanes", tService.listar());
@@ -148,5 +148,5 @@ public class ClientePlanController {
 		model.put("listaClientePlanes",listaClientesPlanes);
 		return "clienteplanbuscar";
 	}
-	
+	*/
 }

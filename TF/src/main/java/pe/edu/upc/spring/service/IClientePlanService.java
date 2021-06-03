@@ -12,7 +12,7 @@ public interface IClientePlanService {
 	public Optional<ClientePlan> listarId(int idClientePlan);
 
 	List<ClientePlan> listar();
-	List<ClientePlan> findByNombrePlan(String nombreCliente);
+	//List<ClientePlan> findByNombrePlan(String nombreCliente);
 
 	
 

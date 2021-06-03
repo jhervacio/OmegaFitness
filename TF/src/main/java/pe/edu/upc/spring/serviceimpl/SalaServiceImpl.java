@@ -67,11 +67,11 @@ public class SalaServiceImpl implements ISalaService{
 		return lista;
 	}
 
-	@Override
+/*	@Override
 	@Transactional(readOnly=true)
 	public List<Sala> findByNameGym(String nombreGimnasio) {
 		List<Sala> lista = salaR.findByNameGym(nombreGimnasio);
 		return lista;
 	}
-
+*/
 }
