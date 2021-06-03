@@ -14,14 +14,14 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name="Cliente")
+@Table(name="Gimnasio")
 public class Gimnasio implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idCliente;
+	private int idGimnasio;
 	
 	@Column(name="nombreGimnasio", nullable = false, length=30)
 	private String nombreGimnasio;
@@ -45,10 +45,10 @@ public class Gimnasio implements Serializable {
 	}
 
 
-	public Gimnasio(int idCliente, String nombreGimnasio, String gimnasioDistrito, String direccionGimnasio,
+	public Gimnasio(int idGimnasio, String nombreGimnasio, String gimnasioDistrito, String direccionGimnasio,
 			String telefonoGimnasio, String correoGimnasio) {
 		super();
-		this.idCliente = idCliente;
+		this.idGimnasio = idGimnasio;
 		this.nombreGimnasio = nombreGimnasio;
 		this.gimnasioDistrito = gimnasioDistrito;
 		this.direccionGimnasio = direccionGimnasio;
@@ -57,13 +57,13 @@ public class Gimnasio implements Serializable {
 	}
 
 
-	public int getIdCliente() {
-		return idCliente;
+	public int getIdGimnasio() {
+		return idGimnasio;
 	}
 
 
-	public void setIdCliente(int idCliente) {
-		this.idCliente = idCliente;
+	public void setIdGimnasio(int idGimnasio) {
+		this.idGimnasio = idGimnasio;
 	}
 
 
