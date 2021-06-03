@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	
+	<head>
+		<meta charset="UTF-8"></meta>
+		<title>Control de salud</title>
+		
+		<script type="text/javascript"
+				src="ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.js">
+		</script>
+		
+		<link
+			href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+			rel="stylesheet" id="bootstrap-css">
+		</link>
+		
+		<script
+			src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
+		</script>
+		
+		<script src="code.jquery.com/jquery-3.2.1.min.js"></script>
+	</head>
+	
+	<body>
+		<div th:replace="fragments/header :: header"></div>
+		
+		<div class="container">
+			<form th:action="@{/salud/registrar}" method="post" th:object="${salud}">
+				<div class="form-group">
+					<label for="idClienteplan">ID:</label>
+					<input type="text" class="form-control" th:field="*{idSalud}"></input>
+					
+					<div class="form-group">
+					
+						
+						<label for="cliente"class="col-sm-2 col-form-label">cliente:</label>
+						<select class="form-control" th:field="*{cliente.idCliente}">
+						<option th:each="a:${listaClientes}" th:value="${a.idCliente}"
+						th:text="${a.nombreCliente}"
+						th:selected="(${a.idCliente}== *{cliente.idCliente})")>
+						</option>
+						</select>
+						
+						<label for="peso">Nuevo Peso:</label>
+						<input type="text" class="form-control" th:field="*{peso}" id="peso"></input>
+						
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('peso')}" 
+							th:errors="*{peso}">						
+						</div>
+						
+							
+						<label for="talla">Talla:</label>
+						<input type="text" class="form-control" th:field="*{talla}" id="talla"></input>
+						
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('talla')}" 
+							th:errors="*{talla}">						
+						</div>
+							
+						<label for="imc">IMC:</label>
+						<input type="text" class="form-control" th:field="*{imc}" id="imc"></input>
+						
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('imc')}" 
+							th:errors="*{imc}">						
+						</div>
+					</div>
+				
+				</div>
+				
+				<button type="submit" class="btn btn-primary">Aceptar</button>
+				<a href="/salud/listar" class="btn btn-danger">Cancelar</a>
+				
+			</form>
+			
+		
+	
+		</div>
+			
+			
+		</div>
+		
+		<div th:replace="fragments/footer :: footer"></div>
+	</body>
+	
+</html>

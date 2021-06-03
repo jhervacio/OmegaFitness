@@ -26,6 +26,11 @@ public class Salud implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idSalud;
 	
+
+	@ManyToOne
+	@JoinColumn(name="idCliente",nullable=false)
+	private Cliente cliente;
+	
 	@Column(name="peso", nullable = false, length=30)
 	private String peso;
 	
@@ -35,9 +40,6 @@ public class Salud implements Serializable {
 	@Column(name = "imc", nullable = false, length=50)
 	private String imc;
 
-	@ManyToOne
-	@JoinColumn(name="idnombreCliente",nullable=false)
-	private TipoPlan tipoplan;
 	
 	@Temporal(TemporalType.DATE)
 	@Column(name="fechaSalud", nullable=false,length = 50)
@@ -49,14 +51,19 @@ public class Salud implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Salud(int idSalud, String peso, String estatura, String imc, Date fechaSalud) {
+	
+
+	public Salud(int idSalud, Cliente cliente, String peso, String estatura, String imc, Date fechaSalud) {
 		super();
 		this.idSalud = idSalud;
+		this.cliente = cliente;
 		this.peso = peso;
 		this.estatura = estatura;
 		this.imc = imc;
 		this.fechaSalud = fechaSalud;
 	}
+
+
 
 	public int getIdSalud() {
 		return idSalud;
@@ -97,6 +104,19 @@ public class Salud implements Serializable {
 	public void setFechaSalud(Date fechaSalud) {
 		this.fechaSalud = fechaSalud;
 	}
+
+
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+	
 	
 	
 }
