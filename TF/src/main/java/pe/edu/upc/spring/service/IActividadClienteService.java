@@ -12,7 +12,7 @@ public interface IActividadClienteService {
 	public void eliminar(int idActividadCliente);
 	public Optional<ActividadCliente> listarId(int idActividadCliente);
 	List<ActividadCliente> listar();
-	List<ActividadCliente> findByName(String nombreActividadCliente);
-	List<ActividadCliente> findByNameCliente(String nombreCliente);
-	List<ActividadCliente> findByNameActividad(String nombreActividad);
+	//List<ActividadCliente> findByName(String nombreActividadCliente);
+	//List<ActividadCliente> findByNameCliente(String nombreCliente);
+	//List<ActividadCliente> findByNameActividad(String nombreActividad);
 }

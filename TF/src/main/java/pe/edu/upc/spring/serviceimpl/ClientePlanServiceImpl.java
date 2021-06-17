@@ -62,7 +62,7 @@ public class ClientePlanServiceImpl implements IClientePlanService {
 		return dClientePlan.findAll();
 	}
 
-	@Override
+/*	@Override
 	@Transactional
 	public List<ClientePlan> findByNombrePlan(String nombreCliente) {
 		List<ClientePlan> lista=dClientePlan.findByNombreCliente(nombreCliente);
@@ -70,7 +70,7 @@ public class ClientePlanServiceImpl implements IClientePlanService {
 		return lista;
 	}
 
-	
+	*/
 
 	
 }

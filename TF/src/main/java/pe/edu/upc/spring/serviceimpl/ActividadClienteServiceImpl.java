@@ -59,7 +59,7 @@ public class ActividadClienteServiceImpl implements IActividadClienteService {
 		return actividadClienteR.findAll();
 	}
 
-	@Override
+/*	@Override
 	@Transactional(readOnly=true)
 	public List<ActividadCliente> findByName(String nombreActividadCliente) {
 		List<ActividadCliente> lista = actividadClienteR.findByName(nombreActividadCliente);
@@ -79,5 +79,5 @@ public class ActividadClienteServiceImpl implements IActividadClienteService {
 		List<ActividadCliente> lista = actividadClienteR.findByNameActividad(nombreActividad);
 		return lista;
 	}
-
+*/
 }

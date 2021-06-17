@@ -13,5 +13,5 @@ public interface ISalaService {
 	public Optional<Sala> listarId(int idSala);
 	List<Sala> listar();
 	List<Sala> findByName(String nombreSala);
-	List<Sala> findByNameGym(String nombreGimnasio);
+	//List<Sala> findByNameGym(String nombreGimnasio);
 }
